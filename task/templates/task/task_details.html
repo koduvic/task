@@ -1,0 +1,21 @@
+{% extends 'task/main.html'%}
+{% load crispy_forms_tags %}
+
+{%block title%} Home{%endblock%}
+
+{%block content%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6  mx-auto">
+           
+            <h2>{{task.title}}</h2>
+
+            <p>{{task.description}}</p>
+        </div>
+      
+    </div>
+</div>
+   
+    
+{%endblock%}

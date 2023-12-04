@@ -1,0 +1,28 @@
+{% extends 'task/main.html'%}
+
+{%block title%} Home{%endblock%}
+
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9  mx-auto">
+            <h2>Are you sure you want to delete "{{task}}?"</h2>
+            <form method="POST" action="">
+                {% csrf_token %}
+                
+                {{form.as_p}}
+                <a class="btn btn-primary" href="{%url 'index'%}">Back</a>
+                <button class="btn btn-primary " type="submit">Delete</button>
+        
+            </form>
+        </div>
+      
+    </div>
+</div>
+
+
+
+{%endblock%}
+
+
+</form>

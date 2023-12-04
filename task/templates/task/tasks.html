@@ -1,0 +1,51 @@
+{% extends 'task/main.html'%}
+
+{%block title%} Home{%endblock%}
+
+{%block content%}
+<div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+                 
+
+    <form method="GET">
+      <div class="input-group">
+        <input type="search" name="q" placeholder="search....." class="form-control">
+        <button type="submit" class="btn btn-primary">search</button>
+      </div>
+
+
+    </form>
+   
+  
+  </div>
+  {%for task in tasks %}
+  <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
+
+    <li
+      class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+      <div class="form-check">
+        <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
+          aria-label="..."  {%if task.complete%}checked{% else %}{%endif%} disabled/>
+      </div>
+    </li>
+    <li
+      class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+    <p class="lead fw-normal mb-0"> {%if task.complete%}<del class="text-danger">{{task.title}}</del>{% else %}{{task.title}}{%endif%} </p>
+    </li>
+    <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
+      <div class="d-flex flex-row justify-content-end mb-1">
+        <a href="{% url 'task-details' task.id%}" class="text-primary me-1" data-mdb-toggle="tooltip" title="Edit todo">View</a>
+        <a href="{% url 'task-update' task.id%}" class="text-info me-1" data-mdb-toggle="tooltip" title="Edit todo">Edit</a>
+        <a href="{% url 'task-delete' task.id%}" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo">Delete</a>
+      </div>
+      <div class="text-end text-muted">
+        <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
+          <p class="small mb-0"><i class=" fa-info-circle me-2"></i>{{task.created}}</p>
+        </a>
+      </div>
+    </li>
+
+   
+  </ul>
+  {%endfor%}
+
+{%endblock%}

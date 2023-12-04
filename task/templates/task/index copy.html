@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Task</title>
+</head>
+<body>
+{%if request.user.is_authenticated%}
+<span>Welcome {{request.user.username}},</span>
+<a href="{% url 'logout'%}">Logout</a>
+{%else%}
+<a href="{% url 'login'%}">Login</a>
+<a href="{% url 'register'%}">Regitser</a>
+{%endif%}
+<hr>
+  <a href="{% url 'task-create'%}">Add Task</a>  
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+    </tr>
+    {% for task in tasks %}
+    
+    <tr>
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td><a href="{% url 'task-details' task.id %}">See More</a></td>
+        <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
+        <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
+        
+
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

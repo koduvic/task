@@ -1,0 +1,28 @@
+{% extends 'task/main.html'%}
+
+{%block title%} Home{%endblock%}
+
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4  mx-auto">
+            <h2>Welcome!</h2>
+            <p>Hello, this is a project developed by Kodu Victor, here you can create and manage your task/goal
+           Make you register to create a new task.
+           {%if request.user.is_authenticated%}
+
+
+           {%else%}
+           Click <a href="{% url 'register'%}">Register</a> to get started
+           {%endif%}
+        
+        </p>
+           
+        </div>
+       
+    </div>
+</div>
+
+
+
+{%endblock%}

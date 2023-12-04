@@ -1,0 +1,25 @@
+{% extends 'task/main.html'%}
+{% load crispy_forms_tags %}
+{%block title%} Home{%endblock%}
+
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6  mx-auto">
+            <h2>Regsiter page</h2>
+            <form method="POST" action="">
+                {% csrf_token %}
+                
+                {{form|crispy}}
+        
+                <button class="btn btn-primary m-1 text-center" type="submit">Register</button>
+        
+            </form>
+            <p>Aready have an account? <a href="{%url 'login'%}">Login</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+{%endblock%}
